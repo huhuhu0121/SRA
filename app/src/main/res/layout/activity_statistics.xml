@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- 뒤로 가기 버튼 -->
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="?attr/selectableItemBackground"
+        android:contentDescription="@string/back"
+        android:src="@android:drawable/ic_menu_revert" />
+
+    <!-- 통계 제목 -->
+    <TextView
+        android:id="@+id/statisticsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="날짜별 흡연 통계"
+        android:textSize="30sp"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:padding="16dp"/>
+
+    <!-- 통계 데이터를 담는 컨테이너 -->
+    <LinearLayout
+        android:id="@+id/statisticsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp" />
+</LinearLayout>
