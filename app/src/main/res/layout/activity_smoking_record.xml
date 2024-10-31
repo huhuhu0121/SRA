@@ -38,7 +38,7 @@
             android:layout_height="48dp"
             android:background="?attr/selectableItemBackground"
             android:contentDescription="Increase"
-            android:src="@drawable/plus_btn" /> <!-- 증가 버튼 아이콘 -->
+            android:src="@drawable/plus_btn" /> <!-- 증가 버튼 아이콘 (변경)-->
 
         <ImageButton
             android:id="@+id/decreaseButton"
@@ -46,7 +46,7 @@
             android:layout_height="48dp"
             android:background="?attr/selectableItemBackground"
             android:contentDescription="Increase"
-            android:src="@drawable/minus_btn"/> <!-- 변경된 감소 버튼 아이콘 -->
+            android:src="@drawable/minus_btn"/> <!-- 변경된 감소 버튼 아이콘 (변경) -->
 
         <ImageButton
             android:id="@+id/backButton"
@@ -54,7 +54,7 @@
             android:layout_height="48dp"
             android:background="?attr/selectableItemBackground"
             android:contentDescription="@string/back"
-            android:src="@drawable/x_btn" /> <!-- 뒤로가기 버튼 아이콘 -->
+            android:src="@drawable/x_btn" /> <!-- 뒤로가기 버튼 아이콘 (변경) -->
     </LinearLayout>
 
     <Button
