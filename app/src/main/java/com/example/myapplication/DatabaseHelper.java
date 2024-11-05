@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
+    private static final String USER_TABLE_NAME = "users";
+    private static final String COLUMN_USER_NAME = "name";
+    private static final String COLUMN_USER_AGE = "age";
+    private static final String COLUMN_USER_GENDER = "gender";
+    private static final String COLUMN_USER_SMOKING_DURATION = "smoking_duration";
 
     private static final String DATABASE_NAME = "SmokingRecords.db";
     private static final int DATABASE_VERSION = 1;
@@ -22,11 +27,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // 테이블 생성
+        // 사용자 관련 테이블 생성
+        String CREATE_USER_TABLE = "CREATE TABLE " + USER_TABLE_NAME + " (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_USER_NAME + " TEXT, " +
+                COLUMN_USER_AGE + " INTEGER, " +
+                COLUMN_USER_GENDER + " TEXT, " +
+                COLUMN_USER_SMOKING_DURATION + " INTEGER)";
+        db.execSQL(CREATE_USER_TABLE);
+
+        // 날짜 관련 테이블 생성
         String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" +
                 COLUMN_DATE + " TEXT PRIMARY KEY, " +
                 COLUMN_COUNT + " INTEGER)";
         db.execSQL(CREATE_TABLE);
+    }
+    // 사용자 정보를 삽입 하는 메소드 추가
+    public void insertUser(String name, int age, String gender, int smokingDuration) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_USER_NAME, name);
+        values.put(COLUMN_USER_AGE, age);
+        values.put(COLUMN_USER_GENDER, gender);
+        values.put(COLUMN_USER_SMOKING_DURATION, smokingDuration);
+
+        db.insert(USER_TABLE_NAME, null, values);
     }
 
     @Override
