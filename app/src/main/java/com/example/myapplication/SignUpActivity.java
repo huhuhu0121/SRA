@@ -14,7 +14,6 @@ public class SignUpActivity extends AppCompatActivity {
 
     private EditText editTextName, editTextAge, editTextSmokingDuration;
     private Spinner spinnerGender;
-    private DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +36,6 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String name = editTextName.getText().toString(); // 입력한 이름 가져오기
-                int age = Integer.parseInt(editTextAge.getText().toString()); // 나이 가져오기
-                String gender = spinnerGender.getSelectedItem().toString(); // 성별 가져오기
-                int smokingDuration = Integer.parseInt(editTextSmokingDuration.getText().toString()); // 흡연 기간 가져오기
-
-                // 사용자 정보 저장
-                databaseHelper.insertUser(name, age, gender, smokingDuration);
-
-                // 이름을 Calendar Activity로 전달
                 Intent intent = new Intent(SignUpActivity.this, CalendarActivity.class);
                 intent.putExtra("userName", name); // 이름 전달
                 startActivity(intent);
