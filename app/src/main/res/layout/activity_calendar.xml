@@ -15,14 +15,14 @@
         android:textStyle="bold"
         android:layout_gravity="center"
         android:text="OOO님 안녕하세요! \n오늘은 금연 O일차입니다."
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:paddingTop="16dp" />
 
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:padding="8dp" /> <!-- 패딩 추가 -->
+        android:layout_marginTop="16dp" />
 
     <Button
         android:id="@+id/statisticsButton"
