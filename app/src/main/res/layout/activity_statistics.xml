@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
+        android:padding="16dp"
         android:contentDescription="@string/back"
         android:src="@android:drawable/ic_menu_revert" />
 
@@ -19,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="날짜별 흡연 통계"
+        android:text="월별 흡연 통계"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -28,7 +29,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:contentDescription="흡연 통계 스크롤 뷰입니다">
 
         <LinearLayout
             android:id="@+id/statisticsContainer"
