@@ -27,13 +27,12 @@ public class CalendarActivity extends AppCompatActivity {
         // DatabaseHelper 인스턴스 생성
         databaseHelper = new DatabaseHelper(this);
 
-        // Intent로부터 이름 가져오기
-        Intent intent = getIntent();
-        String userName = intent.getStringExtra("userName");
+        // 사용자 이름을 데이터베이스에서 가져오기
+        String userName = databaseHelper.getUserName();
 
         if (userName != null && !userName.isEmpty()) {
             // 인사 메시지 설정
-            textViewGreeting.setText(userName + "님 안녕하세요! \n 오늘은 금연 O일차입니다.");
+            textViewGreeting.setText(userName + "님 안녕하세요! \n 오늘은 금연 1일차입니다.");
         } else {
             textViewGreeting.setText("안녕하세요! 오늘은 금연 O일차입니다.");
         }
