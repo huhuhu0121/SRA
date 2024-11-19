@@ -1,7 +1,5 @@
 package com.example.myapplication;
 
-import android.util.Log;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -36,10 +34,6 @@ public class CalendarActivity extends AppCompatActivity {
 
         // 사용자 이름을 데이터베이스에서 가져오기
         String userName = databaseHelper.getUserName();
-
-        // 사용자 가입 날짜 가져오기
-        String registrationDate = databaseHelper.getUserRegistrationDate();
-
 
         if (userName != null && !userName.isEmpty()) {
             // 인사 메시지 설정
