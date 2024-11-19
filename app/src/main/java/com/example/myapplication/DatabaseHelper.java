@@ -24,6 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_USER_AGE = "age";
     private static final String COLUMN_USER_GENDER = "gender";
     private static final String COLUMN_USER_SMOKING_DURATION = "smoking_duration";
+    private static final String COLUMN_USER_REGISTRATION_DATE = "registration_date"; // 추가된 컬럼
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -43,7 +44,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_USER_NAME + " TEXT, " +
                 COLUMN_USER_AGE + " INTEGER, " +
                 COLUMN_USER_GENDER + " TEXT, " +
-                COLUMN_USER_SMOKING_DURATION + " INTEGER)";
+                COLUMN_USER_SMOKING_DURATION + " INTEGER," +
+                COLUMN_USER_REGISTRATION_DATE + " TEXT)";
         db.execSQL(CREATE_USERS_TABLE);
     }
 
@@ -173,5 +175,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return null; // 사용자가 없을 경우 null 반환
     }
-
 }
+
