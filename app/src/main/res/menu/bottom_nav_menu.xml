@@ -5,6 +5,10 @@
         android:icon="@android:drawable/ic_menu_delete"
         android:title="@string/action_reset" />
     <item
+        android:id="@+id/action_calendar"
+        android:icon="@android:drawable/stat_notify_sync_noanim"
+        android:title="캘린더" />
+    <item
         android:id="@+id/action_statistics"
         android:icon="@android:drawable/ic_menu_view"
         android:title="@string/action_statistics" />
