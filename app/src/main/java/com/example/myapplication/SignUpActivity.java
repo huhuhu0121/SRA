@@ -9,6 +9,10 @@ import android.widget.ArrayAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class SignUpActivity extends AppCompatActivity {
 
     private EditText editTextName, editTextAge, editTextSmokingDuration;
@@ -43,6 +47,10 @@ public class SignUpActivity extends AppCompatActivity {
 
             // 사용자 정보를 데이터베이스에 저장
             databaseHelper.saveUserInfo(name, age, gender, smokingDuration);
+
+            // 금연 시작 날짜 저장
+            String today = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+            databaseHelper.saveSmokingStartDate(today);
 
             // CalendarActivity로 이동
             Intent intent = new Intent(SignUpActivity.this, CalendarActivity.class);
