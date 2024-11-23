@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -8,16 +9,17 @@
     android:background="#F5F5F5">
 
     <TextView
-        android:id="@+id/textViewGreeting"
+        android:id="@+id/textViewDaysCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30sp"
         android:textColor="@android:color/holo_blue_dark"
         android:textStyle="bold"
         android:layout_gravity="center"
-        android:text="OOO님 안녕하세요! \n오늘은 금연 1일차입니다."
+        android:text="OOO님 안녕하세요! \n오늘은 금연 O일차입니다."
         android:layout_marginBottom="16dp"
-        android:paddingTop="16dp" />
+        android:paddingTop="16dp"
+        tools:ignore="HardcodedText" />
 
     <CalendarView
         android:id="@+id/calendarView"
@@ -25,6 +27,73 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_marginTop="16dp" />
+
+    <LinearLayout
+        android:id="@+id/badgeContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:weightSum="4">
+
+        <!-- 빈 원형 공간 1 -->
+        <FrameLayout
+            android:id="@+id/badgeSlot1"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:background="@drawable/circle_background">
+            <!-- 뱃지 이미지는 동적으로 추가 -->
+        </FrameLayout>
+
+        <!-- 빈 원형 공간 2 -->
+        <FrameLayout
+            android:id="@+id/badgeSlot2"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:background="@drawable/circle_background">
+        </FrameLayout>
+
+        <!-- 빈 원형 공간 3 -->
+        <FrameLayout
+            android:id="@+id/badgeSlot3"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:background="@drawable/circle_background">
+        </FrameLayout>
+
+        <!-- 빈 원형 공간 4 -->
+        <FrameLayout
+            android:id="@+id/badgeSlot4"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:background="@drawable/circle_background">
+        </FrameLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/motivationalTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="작은 한 걸음이 위대한 변화를 만듭니다."
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:padding="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="8dp"
+        android:gravity="center"
+        android:elevation="2dp"
+        android:textStyle="italic"
+        tools:ignore="HardcodedText" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"

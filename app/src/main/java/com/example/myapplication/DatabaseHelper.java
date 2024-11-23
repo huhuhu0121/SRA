@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import android.util.Log;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "SmokingRecords.db";
@@ -56,6 +61,58 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + USERS_TABLE);
         // 새 테이블 생성
         onCreate(db);
+    }
+    // 금연 시작 날짜 저장
+    public void saveSmokingStartDate(String date) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_USER_REGISTRATION_DATE, date);
+
+        long result = db.update(USERS_TABLE, values, "id = ?", new String[]{"1"}); // 첫 번째 사용자만
+        if (result == -1) {
+            Log.e("DatabaseHelper", "Failed to save smoking start date");
+        } else {
+            Log.d("DatabaseHelper", "Smoking start date saved successfully");
+        }
+    }
+
+    // 금연 시작 날짜 가져오기
+    public String getSmokingStartDate() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT " + COLUMN_USER_REGISTRATION_DATE + " FROM " + USERS_TABLE + " LIMIT 1";
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor != null && cursor.moveToFirst()) {
+            String startDate = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_USER_REGISTRATION_DATE));
+            cursor.close();
+            return startDate;
+        }
+        if (cursor != null) cursor.close();
+        return null;
+    }
+
+    // 금연 시작 날짜부터 경과한 일수 계산
+    public int calculateDaysSinceStart() {
+        String startDate = getSmokingStartDate(); // 금연 시작일 가져오기
+        if (startDate == null) {
+            return 0; // 시작일이 없을 경우 0 반환
+        }
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        try {
+            Date start = sdf.parse(startDate);
+            Date today = new Date();
+
+            // 날짜 차이 계산 (밀리초 단위)
+            long difference = today.getTime() - start.getTime();
+            int days = (int) (difference / (1000 * 60 * 60 * 24)); // 일 단위 변환
+
+            // 최소 1일차부터 시작
+            return days + 1;
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return 0; // 에러 발생 시 기본값 반환
+        }
     }
 
     // 모든 흡연 기록 불러오기
@@ -161,7 +218,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;  // 사용자가 등록되지 않음
         }
     }
-
+    // 사용자 이름 가져오기
     public String getUserName() {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT " + COLUMN_USER_NAME + " FROM " + USERS_TABLE + " LIMIT 1"; // 첫 번째 사용자 정보 가져오기
