@@ -18,8 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.List;
-
 public class StatisticsActivity extends AppCompatActivity {
 
     private LinearLayout statisticsContainer;
@@ -127,7 +125,7 @@ public class StatisticsActivity extends AppCompatActivity {
     private int getBarColor(int smokingCount) {
         if (smokingCount <= 10) {
             return Color.GREEN;  // 낮은 흡연 횟수일 때 녹색
-        } else if (smokingCount <= 20) {
+        } else if (smokingCount < 20) {
             return Color.YELLOW;  // 중간 흡연 횟수일 때 노란색
         } else {
             return Color.RED;  // 높은 흡연 횟수일 때 빨간색
